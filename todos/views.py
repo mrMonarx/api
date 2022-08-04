@@ -14,3 +14,6 @@ class TodoList(ListCreateAPIView):
 class TodoDetail(RetrieveUpdateDestroyAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializers
+
+def home(request):
+    return render(request=request, template_name='home.html')
