@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #tashqi
     'rest_framework',
     'corsheaders',
+    'drf_yasg',
 
     # mahalliy
     'todos',

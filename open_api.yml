@@ -1,0 +1,156 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /api/{id}/:
+    get:
+      operationId: retrieveTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todos'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todos'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Todos'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Todos'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todos'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todos'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Todos'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Todos'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todos'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/:
+    get:
+      operationId: listTodos
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todos'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createTodo
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todos'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Todos'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Todos'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todos'
+          description: ''
+      tags:
+      - api
+components:
+  schemas:
+    Todos:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 200
+        content:
+          type: string
+      required:
+      - title
+      - content
